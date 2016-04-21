@@ -17,6 +17,12 @@ gem 'authlogic'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'twitter-bootswatch-rails', '~> 3.3.4'
+
+gem 'twitter-bootswatch-rails-helpers'
+
+gem 'therubyracer'
+
 group :development, :test do
   gem 'byebug'
 end
