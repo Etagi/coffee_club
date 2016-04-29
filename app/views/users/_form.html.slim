@@ -10,11 +10,12 @@
   = f.label :email, 'Email(используется как логин)'
   = f.email_field :email, class: 'form-control'
   = f.label :password, 'Пароль'
-  = f.password_field :password
+  = f.password_field :password, class: 'form-control'
   = f.label :password, 'Подтверждение'
-  = f.password_field :password_confirmation
-  .fields_group
+  = f.password_field :password_confirmation, class: 'form-control'
+  br/
+  .form-group
     - if f.object.new_record?
-      = f.submit 'Создать кофемана', class: 'btn-default'
+      = f.submit 'Создать кофемана', class: 'btn-default form-control'
     - else
-      = f.submit 'Сохранить кофемана', class: 'btn-default'
+      = f.submit 'Сохранить кофемана', class: 'btn-default form-control'

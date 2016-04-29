@@ -1,0 +1,31 @@
+h1
+  | Кофеманы
+table.table.table-bordered.table-hover
+  thead
+    tr
+      th
+        | ФИО
+      th
+        | Email
+      th
+        | RIES ID
+      th
+        | Дата последнего платежа
+      th
+        | Дата вступления в клуб
+      th
+        | Действия
+  - @users.each do |user|
+    tr
+      td
+        | #{user.fio}
+      td
+        | #{user.email}
+      td
+        | #{user.ries_id}
+      td
+        | ХЗ
+      td
+        | #{user.created_at}
+      td
+        = link_to 'Посмотреть', user_path(user)

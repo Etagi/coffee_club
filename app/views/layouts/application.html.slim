@@ -20,14 +20,14 @@ html(lang="en")
           = link_to 'Кофейный клуб "Бодрячок"', root_path, class: 'navbar-brand'
         - if current_user
           ul[class="nav navbar-nav"]
-            = nav_link 'Участники', account_path
+            = nav_link 'Участники', users_path
             = nav_link 'Движение средств', account_path
             = nav_link 'Профиль', account_path
             li
               = link_to 'Выход', logout_path
-    .col-xs-6.col-sm-3
+    .col-xs-6.col-sm-2
 
-    .col-xs-6.col-sm-3
+    .col-xs-6.col-sm-9
     	= yield
 
     /!

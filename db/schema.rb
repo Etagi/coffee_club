@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421113918) do
+ActiveRecord::Schema.define(version: 20160429043118) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "user_id",      null: false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160421113918) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
     t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
