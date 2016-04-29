@@ -17,16 +17,14 @@ html(lang="en")
     nav[class="navbar navbar-default"]
       .container-fluid
         .navbar-header
-          = link_to_unless_current 'Кофейный клуб "Бодрячок"', root_path, class: 'navbar-brand' do
-
-        ul[class="nav navbar-nav"]
-          li[class="active"]
-            a[href="#"]
-              | Главная
-          li
-            a[href="#"]
-              | Page 1
-
+          = link_to 'Кофейный клуб "Бодрячок"', root_path, class: 'navbar-brand'
+        - if current_user
+          ul[class="nav navbar-nav"]
+            = nav_link 'Участники', account_path
+            = nav_link 'Движение средств', account_path
+            = nav_link 'Профиль', account_path
+            li
+              = link_to 'Выход', logout_path
     .col-xs-6.col-sm-3
 
     .col-xs-6.col-sm-3

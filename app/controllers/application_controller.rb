@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :require_user?
+
   helper_method :current_user_session, :current_user
 
   private
+    def require_user?
+      redirect_to(login_path) unless current_user
+    end
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
