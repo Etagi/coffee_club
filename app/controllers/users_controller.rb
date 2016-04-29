@@ -13,11 +13,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(role: 'coffeeman')
+    @user = User.new
   end
 
   def create
-    @user = User.find(params[:id])
+    @user = User.create(user_params.merge(role: 'coffeeman'))
     redirect_to users_path
   end
 

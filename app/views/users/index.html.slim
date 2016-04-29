@@ -1,5 +1,11 @@
 h1
   | Кофеманы
+
+- if can?(User, :create)
+  = link_to 'Добавить кофемана', new_user_path, class: 'btn btn-default btn-large'
+  br/
+  br/
+
 table.table.table-bordered.table-hover
   thead
     tr
@@ -32,3 +38,6 @@ table.table.table-bordered.table-hover
         - if can?(user, :edit)
           | &nbsp;
           = link_to 'Редактировать', edit_user_path(user)
+        - if can?(user, :destroy)
+          | &nbsp;
+          = link_to 'Удалить', users_path(user), method: :delete, data: { confirm: 'Удалить кофемана?' }
