@@ -7,6 +7,8 @@
   = f.text_field :middle_name, class: 'form-control'
   = f.label :ries_id, 'ID пользователя из РИЕС'
   = f.text_field :ries_id, class: 'form-control'
+  = f.label :active, 'Активен'
+  = f.check_box :active, class: 'form-control'
   = f.label :email, 'Email(используется как логин)'
   = f.email_field :email, class: 'form-control'
   = f.label :password, 'Пароль'

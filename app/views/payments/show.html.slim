@@ -1,0 +1,14 @@
+h1
+  | Просмотр платежа
+
+.well
+  | Дата: #{@payment.created_at}
+.well
+  | Сумма: #{@payment.money}
+.well
+  | Описание: #{@payment.description}
+- if @payment.from_user
+  .well
+    | От кого принято: #{@payment.from_user.fio}
+.well
+  | Внес платеж: #{@payment.user.fio}

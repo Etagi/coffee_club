@@ -20,8 +20,8 @@ html(lang="en")
           = link_to 'Кофейный клуб "Бодрячок"', root_path, class: 'navbar-brand'
         - if current_user
           ul[class="nav navbar-nav"]
-            = nav_link 'Участники', users_path
-            = nav_link 'Движение средств', account_path
+            = nav_link 'Кофеманы', users_path
+            = nav_link 'Движение средств', payments_path
             = nav_link 'Профиль', account_path
             li
               = link_to 'Выход', logout_path

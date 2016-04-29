@@ -4,7 +4,8 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @payment = Payment.create(payment_params)
+    @payment = Payment.create(payment_params.merge(user_id: current_user.id))
+    redirect_to payments_path
   end
 
   def index
@@ -16,10 +17,11 @@ class PaymentsController < ApplicationController
   end
 
   def destroy
-    @payment = Payment.find(params[:id])
+    Payment.find(params[:id]).destroy
+    redirect_to payments_path
   end
 
   def payment_params
-    params.require(:payment).permit(:from_user_id, :money)
+    params.require(:payment).permit(:from_user_id, :money, :description)
   end
 end

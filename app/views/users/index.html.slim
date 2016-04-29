@@ -20,24 +20,29 @@ table.table.table-bordered.table-hover
       th
         | Дата вступления в клуб
       th
+        | Статус
+      th
         | Действия
   - @users.each do |user|
-    tr
-      td
-        | #{user.fio}
-      td
-        | #{user.email}
-      td
-        | #{user.ries_id}
-      td
-        | ХЗ
-      td
-        | #{user.created_at}
-      td
-        = link_to 'Посмотреть', user_path(user)
-        - if can?(user, :edit)
-          | &nbsp;
-          = link_to 'Редактировать', edit_user_path(user)
-        - if can?(user, :destroy)
-          | &nbsp;
-          = link_to 'Удалить', users_path(user), method: :delete, data: { confirm: 'Удалить кофемана?' }
+    tbody
+      tr
+        td
+          | #{user.fio}
+        td
+          | #{user.email}
+        td
+          | #{user.ries_id}
+        td
+          - if user.my_payments.last
+            | #{user.my_payments.last.created_at}
+          - else
+            | Не платил
+        td
+          | #{user.created_at}
+        td
+          | #{user.active? ? 'Активен' : 'Деактивирован' }
+        td
+          = link_to 'Посмотреть', user_path(user)
+          - if can?(user, :edit)
+            | &nbsp;
+            = link_to 'Редактировать', edit_user_path(user)

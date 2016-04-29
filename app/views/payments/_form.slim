@@ -1,0 +1,11 @@
+= form_for @payment, class: 'form' do |f|
+  = f.label :money, 'Сумма'
+  = f.number_field :money, class: 'form-control'
+  = f.label :description, 'Описание'
+  = f.text_area :description, class: 'form-control'
+  = f.label :description, 'От кого принято(если приход)'
+  = f.collection_select(:from_user_id, User.all, :id, :fio, {prompt: 'От кого'}, class: 'form-control')
+
+  br/
+  .form-group
+    = f.submit 'Добавить операцию', class: 'btn-default form-control'

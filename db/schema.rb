@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429043118) do
+ActiveRecord::Schema.define(version: 20160429061656) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "user_id",      null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160429043118) do
     t.float    "money"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.text     "description"
   end
 
   create_table "user_sessions", force: :cascade do |t|
@@ -35,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160429043118) do
     t.string   "role"
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.integer  "login_count",        default: 0, null: false
-    t.integer  "failed_login_count", default: 0, null: false
+    t.integer  "login_count",        default: 0,    null: false
+    t.integer  "failed_login_count", default: 0,    null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160429043118) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",             default: true
   end
 
 end

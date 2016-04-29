@@ -32,9 +32,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    @user.update_attribute(:active, false)
+    redirect_to users_path
   end
 
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :middle_name, :ries_id, :email, :password, :password_confirmation)
+    params.require(:user).permit(:last_name, :first_name, :middle_name, :ries_id, :email, :password, :password_confirmation, :active)
   end
 end

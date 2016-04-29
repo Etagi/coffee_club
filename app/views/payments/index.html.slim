@@ -1,0 +1,42 @@
+h1
+  | Движение средств
+- if can?(Payment, :create)
+  = link_to 'Новый приход/расход', new_payment_path, class: 'btn btn-default btn-large'
+  br/
+  br/
+
+table.table.table-bordered.table-hover
+  thead
+    tr
+      th
+        | Дата
+      th
+        | Сумма
+      th
+        | Описание
+      th
+        | Дополнительно
+      th
+        | Действия
+  tbody
+    - @payments.each do |payment|
+      tr
+        td
+          | #{payment.created_at}
+        td
+          | #{payment.money} 
+        td
+          | #{payment.description}
+        td
+          - if(payment.from_user)
+            | Принято от #{payment.from_user.fio}
+        td
+          = link_to 'Посмотреть', payment_path(payment)
+          - if can?(payment, :destroy)
+            | &nbsp;
+            = link_to 'Удалить', payment_path(payment), method: :delete, data: { confirm: 'Удалить операцию?' }
+
+h2
+  | Остаток 
+  span.label.label-default
+    | #{Payment.summ} р.
