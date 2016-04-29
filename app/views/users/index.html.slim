@@ -29,3 +29,6 @@ table.table.table-bordered.table-hover
         | #{user.created_at}
       td
         = link_to 'Посмотреть', user_path(user)
+        - if can?(user, :edit)
+          | &nbsp;
+          = link_to 'Редактировать', edit_user_path(user)
