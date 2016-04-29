@@ -1,11 +1,20 @@
-= form_for @user, class: form do |f|
-  = f.label :last_name
-  = f.text :last_name
-  = f.label :first_name
-  = f.text :first_name
-  = f.label :middle_name
-  = f.text :middle_name
-  = f.label :ries_id
-  = f.text :ries_id
-  = f.label :email
-  = f.email :email
+= form_for @user, class: 'form' do |f|
+  = f.label :last_name, 'Фамилия'
+  = f.text_field :last_name, class: 'form-control'
+  = f.label :first_name, 'Имя'
+  = f.text_field :first_name, class: 'form-control'
+  = f.label :middle_name, 'Отчество'
+  = f.text_field :middle_name, class: 'form-control'
+  = f.label :ries_id, 'ID пользователя из РИЕС'
+  = f.text_field :ries_id, class: 'form-control'
+  = f.label :email, 'Email(используется как логин)'
+  = f.email_field :email, class: 'form-control'
+  = f.label :password, 'Пароль'
+  = f.password_field :password
+  = f.label :password, 'Подтверждение'
+  = f.password_field :password_confirmation
+  .fields_group
+    - if f.object.new_record?
+      = f.submit 'Создать кофемана', class: 'btn-default'
+    - else
+      = f.submit 'Сохранить кофемана', class: 'btn-default'
