@@ -1,6 +1,6 @@
 h1
   | Движение средств
-- if can?(Payment, :create)
+- if can?(:create, Payment)
   = link_to 'Новый приход/расход', new_payment_path, class: 'btn btn-default btn-large'
   br/
   br/
@@ -32,7 +32,7 @@ table.table.table-bordered.table-hover
             | Принято от #{payment.from_user.fio}
         td
           = link_to 'Посмотреть', payment_path(payment)
-          - if can?(payment, :destroy)
+          - if can?(:destroy, payment)
             | &nbsp;
             = link_to 'Удалить', payment_path(payment), method: :delete, data: { confirm: 'Удалить операцию?' }
 
