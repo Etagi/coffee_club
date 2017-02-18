@@ -21,6 +21,8 @@ class PaymentsController < ApplicationController
     redirect_to payments_path
   end
 
+  private
+  
   def payment_params
     params.require(:payment).permit(:from_user_id, :money, :description)
   end
